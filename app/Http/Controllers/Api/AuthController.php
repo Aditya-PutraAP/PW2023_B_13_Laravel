@@ -54,7 +54,7 @@ class AuthController extends Controller
 
         return response([
             'message' => 'Link verifikasi telah dikirim ke email anda. Silakan cek email anda untuk mengaktifkan akun.',
-            'user' => $user,
+            'data' => $user,
         ], 200);
     }
 
@@ -99,7 +99,7 @@ class AuthController extends Controller
 
         return response([
             'message' => 'Authenticated',
-            'user' => $user,
+            'data' => $user,
             'token_type' => 'Bearer',
             'access_token' => $token
         ]);
