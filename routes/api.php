@@ -24,15 +24,16 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'show']);
     Route::put('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'update']);
     Route::delete('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'destroy']);
-    //Update Status Kredit
+    //Kredit(Admin)
     Route::post('/kredit/{id}', [App\Http\Controllers\Api\KreditController::class,'kredit']);
+    Route::get('/kredit', [App\Http\Controllers\Api\KreditController::class,'index']);
 
     //Profile
     Route::get('/profile', [App\Http\Controllers\Api\AuthController::class,'index']);
     
-    //Kredit
+    //Kredit(User)
     Route::post('/kredit', [App\Http\Controllers\Api\KreditController::class,'store']);
-    Route::get('/kredit', [App\Http\Controllers\Api\KreditController::class,'index']);
+    Route::get('/kredit/{id}', [App\Http\Controllers\Api\KreditController::class,'show']);
 
     //Pembayaran token listrik
     Route::get('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'index']);
