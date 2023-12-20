@@ -17,11 +17,11 @@ class KreditController extends Controller
      */
     public function index()
     {
-        $kredit = Kredit::get();
+        $kredit = Kredit::where('status', 'Pending')->get();
 
-        if($kredit){
+        if ($kredit) {
             return response([
-                'message' => 'Tampil semua kredit',
+                'message' => 'Tampil semua kredit yang pending',
                 'data' => $kredit,
             ], 200);
         }
@@ -41,7 +41,7 @@ class KreditController extends Controller
         ]);
 
         $user = User::where('id', Auth::user()->id)->with('rekening')->first();
-            
+
         $user->rekening->saldo += $storeData['jumlah_uang'];
         $user->rekening->save();
 
@@ -62,22 +62,21 @@ class KreditController extends Controller
         $kredit = Kredit::find($id);
 
         if ($kredit) {
-            if($request->status == 'Diterima'){
-                $kredit->status = 'Diterima'; 
+            if ($request->status == 'Diterima') {
+                $kredit->status = 'Diterima';
                 $kredit->save();
                 return response([
                     'message' => 'Status kredit berhasil diupdate',
                     'data' => $kredit,
                 ], 200);
-            } else{
-                $kredit->status = 'Ditolak'; 
+            } else {
+                $kredit->status = 'Ditolak';
                 $kredit->save();
                 return response([
                     'message' => 'Status kredit berhasil diupdate',
                     'data' => $kredit,
                 ], 200);
             }
-            
         } else {
             return response(['error' => 'Kredit tidak ditemukan'], 400);
         }
@@ -108,6 +107,16 @@ class KreditController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $kredit = Kredit::find($id);
+        try {
+            $kredit->delete();
+            return response([
+                'message' => 'Kredit berhasil dihapus',
+            ], 200);
+        } catch (\Throwable $th) {
+            return response([
+                'message' => 'Kredit gagal dihapus',
+            ], 400);
+        }
     }
 }
