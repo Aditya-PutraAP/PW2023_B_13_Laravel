@@ -14,18 +14,33 @@ class BayarListrikController extends Controller
     public function index()
     {
         $pembayaran = BayarListrik::all();
-        return response()->json($pembayaran, 200);
+        return response(
+            [
+                'message' => 'Get all pembayaran listrik success',
+                'data' => $pembayaran,
+            ],
+            200
+        );
     }
 
     public function show($id)
     {
-        $pembayaran = BayarListrik::find($id);
+        $pembayaran = BayarListrik::where('id_user', $id)->get();
 
         if (!$pembayaran) {
-            return response()->json(['message' => 'Pembayaran not found'], 404);
+            return response(
+                [
+                    'message' => 'Pembayaran not found',
+                    'data' => '',
+                ],
+                404
+            );
         }
 
-        return response()->json($pembayaran, 200);
+        return response([
+            'message' => 'Get token listrik data success',
+            'data' => $pembayaran,
+        ], 200);
     }
 
     public function store(Request $request)
@@ -50,7 +65,10 @@ class BayarListrikController extends Controller
 
         $pembayaran = BayarListrik::create($request->all());
 
-        return response()->json($pembayaran, 201);
+        return response([
+            'message' => 'Pembayaran listrik berhasil',
+            'data' => $pembayaran,
+        ], 200);
     }
 
     public function destroy($id)
@@ -63,8 +81,12 @@ class BayarListrikController extends Controller
 
         $pembayaran->delete();
 
-        return response()->json(['message' => 'Pembayaran deleted successfully'], 200);
+        return response([
+            'message' => 'Delete pembayaran listrik success',
+            'data' => $pembayaran,
+        ], 200);
     }
+
     private function generateToken()
     {
         $token = '';
@@ -73,5 +95,4 @@ class BayarListrikController extends Controller
         }
         return $token;
     }
-
 }
