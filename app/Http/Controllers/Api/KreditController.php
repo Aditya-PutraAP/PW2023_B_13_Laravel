@@ -21,7 +21,7 @@ class KreditController extends Controller
 
         if($kredit){
             return response([
-                'message' => 'Tampil kredit',
+                'message' => 'Tampil semua kredit',
                 'data' => $kredit,
             ], 200);
         }
@@ -86,9 +86,13 @@ class KreditController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $kredit = Kredit::where('id_user', $id)->get();
+        return response([
+            'message' => 'Tampil kredit user',
+            'data' => $kredit,
+        ], 200);
     }
 
     /**

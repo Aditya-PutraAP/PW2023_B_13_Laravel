@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('verify_key');
             $table->integer('active')->nullable();
+            $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

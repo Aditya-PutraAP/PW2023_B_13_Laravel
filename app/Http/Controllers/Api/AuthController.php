@@ -134,9 +134,29 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            return response(['error' => 'User not found'], 404);
+        }
+
+        $request->validate([
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $uploadFolder = 'profile_picture';
+        $image = $request->file('profile_picture');
+        $image_uploaded_path = $image->store($uploadFolder, 'public');
+        $uploadedImageResponse = basename($image_uploaded_path);
+        
+        $user->update(['profile_picture' => $uploadedImageResponse]);
+
+        return response([
+            'message' => 'Berhasil menambahkan profile picture',
+            'data' => $user,
+        ], 200);
     }
 
     /**
