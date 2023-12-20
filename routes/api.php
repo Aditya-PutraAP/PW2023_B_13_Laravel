@@ -30,6 +30,8 @@ Route::middleware('auth:api')->group(function(){
 
     //Profile
     Route::get('/profile', [App\Http\Controllers\Api\AuthController::class,'index']);
+    //Profile Picture
+    Route::post('/profile/{id}', [App\Http\Controllers\Api\AuthController::class,'store']);
     
     //Kredit(User)
     Route::post('/kredit', [App\Http\Controllers\Api\KreditController::class,'store']);

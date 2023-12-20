@@ -30,6 +30,7 @@ class User extends Authenticatable
         'no_telp',
         'verify_key',
         'active',
+        'profile_picture',
     ];
 
     /**
