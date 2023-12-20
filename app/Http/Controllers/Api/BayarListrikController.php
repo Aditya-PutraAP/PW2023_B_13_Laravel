@@ -19,7 +19,7 @@ class BayarListrikController extends Controller
 
     public function show($id)
     {
-        $pembayaran = BayarListrik::find($id);
+        $pembayaran = BayarListrik::where('id_user', $id)->get();
 
         if (!$pembayaran) {
             return response()->json(['message' => 'Pembayaran not found'], 404);
@@ -73,5 +73,4 @@ class BayarListrikController extends Controller
         }
         return $token;
     }
-
 }

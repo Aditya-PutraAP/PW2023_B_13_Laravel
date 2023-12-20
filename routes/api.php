@@ -40,7 +40,7 @@ Route::middleware('auth:api')->group(function () {
 
     //Pembayaran token listrik
     Route::get('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'index']);
-    Route::get('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'show']);
+    Route::get('/pembayaran/{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'show']);
     Route::post('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'store']);
-    Route::delete('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'destroy']);
+    Route::delete('/pembayaran/{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'destroy']);
 });
