@@ -152,8 +152,8 @@ class AuthController extends Controller
             $image = $request->file('profile_picture');
             $image_uploaded_path = $image->store($uploadFolder, 'public');
             $uploadedImageResponse = basename($image_uploaded_path);
-            
-            Storage::disk('public')->delete('profile_picture/'.$request->profile_picture);
+
+            Storage::disk('public')->delete('profile_picture/'.$user->profile_picture);
 
             $user->update(['profile_picture' => $uploadedImageResponse]);
         }
