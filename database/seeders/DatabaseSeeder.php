@@ -22,15 +22,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Rekening::create([
-            'nama' => 'Admin', 
-            'nik' => '1122334455', 
-            'alamat' => 'Yogyakarta', 
+            'nama' => 'Admin',
+            'nik' => '1122334455',
+            'alamat' => 'Yogyakarta',
             'tempat_lahir' => 'Yogyakarta',
             'tgl_lahir' => '16-12-2023',
             'jenis_kelamin' => 'Laki-laki',
             'jenis_tabungan' => 'Black',
             'no_rek' => '202312161',
             'saldo' => '500000000',
+            'jenis_kartu' => 'Gold',
         ]);
 
         User::create([
@@ -42,6 +43,6 @@ class DatabaseSeeder extends Seeder
             'verify_key' => 'abc123',
             'email_verified_at' => now(),
             'active' => 1,
-          ]);
+        ]);
     }
 }

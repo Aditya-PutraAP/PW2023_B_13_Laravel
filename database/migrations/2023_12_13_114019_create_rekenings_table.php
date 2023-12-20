@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('jenis_tabungan');
             $table->string('no_rek');
             $table->integer('saldo');
+            $table->string('jenis_kartu');
             $table->timestamps();
         });
     }

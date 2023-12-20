@@ -37,10 +37,11 @@ class RekeningController extends Controller
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
             'saldo' => 'required',
+            'jenis_kartu' => 'required',
         ]);
 
         if ($validate->fails()) {
-            return response(['message'=> $validate->errors()],400);
+            return response(['message' => $validate->errors()], 400);
         }
 
         $storeData['no_rek'] = now()->format('Ymd') . Rekening::count() + 1;
@@ -48,7 +49,7 @@ class RekeningController extends Controller
         return response([
             'message' => 'Content Added Successfully',
             'data' => $rekening,
-        ],200);
+        ], 200);
     }
 
     /**
