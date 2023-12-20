@@ -147,6 +147,17 @@ class AuthController extends Controller
             'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        if($request->hasFile('profile_picture')){
+            $uploadFolder = 'profile_picture';
+            $image = $request->file('profile_picture');
+            $image_uploaded_path = $image->store($uploadFolder, 'public');
+            $uploadedImageResponse = basename($image_uploaded_path);
+            
+            Storage::disk('public')->delete('profile_picture/'.$request->profile_picture);
+
+            $user->update(['profile_picture' => $uploadedImageResponse]);
+        }
+
         $uploadFolder = 'profile_picture';
         $image = $request->file('profile_picture');
         $image_uploaded_path = $image->store($uploadFolder, 'public');
