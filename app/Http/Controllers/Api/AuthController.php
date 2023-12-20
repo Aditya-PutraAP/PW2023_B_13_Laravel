@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Mail\MailSend;
 use App\Models\User;
@@ -138,7 +139,7 @@ class AuthController extends Controller
     {
         $user = User::find($id);
 
-        if (!$user) {
+        if (!$user) {       
             return response(['error' => 'User not found'], 404);
         }
 
@@ -150,7 +151,7 @@ class AuthController extends Controller
         $image = $request->file('profile_picture');
         $image_uploaded_path = $image->store($uploadFolder, 'public');
         $uploadedImageResponse = basename($image_uploaded_path);
-        
+
         $user->update(['profile_picture' => $uploadedImageResponse]);
 
         return response([
