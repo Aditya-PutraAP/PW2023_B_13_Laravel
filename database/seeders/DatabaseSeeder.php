@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             'tempat_lahir' => 'Yogyakarta',
             'tgl_lahir' => '16-12-2023',
             'jenis_kelamin' => 'Laki-laki',
-            'jenis_tabungan' => 'Black',
             'no_rek' => '202312161',
             'saldo' => '500000000',
             'jenis_kartu' => 'Gold',
