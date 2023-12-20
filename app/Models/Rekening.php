@@ -22,5 +22,6 @@ class Rekening extends Model
         'jenis_kelamin',
         'jenis_tabungan',
         'no_rek',
+        'saldo',
     ];
 }

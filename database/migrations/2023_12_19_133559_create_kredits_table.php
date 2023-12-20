@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rekening', function (Blueprint $table) {
+        Schema::create('kredit', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->string('nama');
-            $table->string('nik');
-            $table->longText('alamat');
-            $table->string('tempat_lahir');
-            $table->string('tgl_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('jenis_tabungan');
-            $table->string('no_rek');
-            $table->integer('saldo');
+            $table->integer('jumlah_uang');
+            $table->string('waktu_pengembalian');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rekening');
+        Schema::dropIfExists('kredit');
     }
 };

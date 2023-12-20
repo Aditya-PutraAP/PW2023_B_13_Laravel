@@ -24,10 +24,14 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'show']);
     Route::put('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'update']);
     Route::delete('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'destroy']);
+    //Update Status Kredit
+    Route::post('/kredit/{id}', [App\Http\Controllers\Api\KreditController::class,'kredit']);
 
-    Route::get('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'index']);
-    Route::get('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'show']);
-    Route::post('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'store']);
-    Route::put('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'update']);
-    Route::delete('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'destroy']);
+    //Profile
+    Route::get('/profile', [App\Http\Controllers\Api\AuthController::class,'index']);
+    
+    //Kredit
+    Route::post('/kredit', [App\Http\Controllers\Api\KreditController::class,'store']);
+    Route::get('/kredit', [App\Http\Controllers\Api\KreditController::class,'index']);
+    
 });

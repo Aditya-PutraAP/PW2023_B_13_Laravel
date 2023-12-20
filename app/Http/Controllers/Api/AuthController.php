@@ -117,9 +117,18 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    //tampil profile user
     public function index()
     {
-        //
+        $user = User::where('id', Auth::user()->id)->get()->load('rekening');
+
+        if ($user) {
+            return response([
+                'message' => 'Tampil profile user',
+                'data' => $user,
+            ], 200);
+        }
     }
 
     /**
