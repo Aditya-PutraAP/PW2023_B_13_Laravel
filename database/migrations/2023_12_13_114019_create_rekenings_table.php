@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->string('tgl_lahir');
             $table->string('jenis_kelamin');
-            $table->string('jenis_tabungan');
             $table->string('no_rek');
             $table->integer('saldo');
+            $table->string('jenis_kartu');
             $table->timestamps();
         });
     }

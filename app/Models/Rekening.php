@@ -14,14 +14,15 @@ class Rekening extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nama', 
-        'nik', 
-        'alamat', 
+        'nama',
+        'nik',
+        'alamat',
         'tempat_lahir',
         'tgl_lahir',
         'jenis_kelamin',
         'jenis_tabungan',
         'no_rek',
         'saldo',
+        'jenis_kartu'
     ];
 }
