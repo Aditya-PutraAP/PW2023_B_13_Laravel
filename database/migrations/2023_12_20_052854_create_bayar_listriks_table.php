@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id('id_tagihan')->autoIncrement();
             $table->string('no_pelanggan');
-            $table->bigInteger('token');
+            $table->string('token');
             $table->integer('harga');
             $table->unsignedBigInteger('id_user');
             $table->timestamps();
