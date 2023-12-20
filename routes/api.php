@@ -33,5 +33,11 @@ Route::middleware('auth:api')->group(function(){
     //Kredit
     Route::post('/kredit', [App\Http\Controllers\Api\KreditController::class,'store']);
     Route::get('/kredit', [App\Http\Controllers\Api\KreditController::class,'index']);
+
+    //Pembayaran token listrik
+    Route::get('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'index']);
+    Route::get('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'show']);
+    Route::post('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'store']);
+    Route::delete('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'destroy']);
     
 });
