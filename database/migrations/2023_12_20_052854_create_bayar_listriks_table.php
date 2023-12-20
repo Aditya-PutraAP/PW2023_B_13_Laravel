@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_tagihan')->autoIncrement();
             $table->string('no_pelanggan');
             $table->bigInteger('token');
-            $table->decimal('harga', 10, 2);
+            $table->integer('harga');
             $table->unsignedBigInteger('id_user');
             $table->timestamps();
 

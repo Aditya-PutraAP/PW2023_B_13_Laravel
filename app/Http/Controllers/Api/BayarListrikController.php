@@ -48,7 +48,7 @@ class BayarListrikController extends Controller
         $token = $this->generateToken();
         $request->merge(['token' => $token]);
 
-        $pembayaran = BayarListrik::create($request);
+        $pembayaran = BayarListrik::create($request->all());
 
         return response()->json($pembayaran, 201);
     }
