@@ -36,6 +36,7 @@ class RekeningController extends Controller
             'tempat_lahir' => 'required',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
+            'saldo' => 'required',
         ]);
 
         if ($validate->fails()) {

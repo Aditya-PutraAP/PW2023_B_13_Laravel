@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'jenis_kelamin' => 'Laki-laki',
             'jenis_tabungan' => 'Black',
             'no_rek' => '202312161',
+            'saldo' => '500000000',
         ]);
 
         User::create([
