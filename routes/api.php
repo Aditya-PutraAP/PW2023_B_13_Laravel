@@ -25,5 +25,9 @@ Route::middleware('auth:api')->group(function(){
     Route::put('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'update']);
     Route::delete('/rekening/{id}',[App\Http\Controllers\Api\RekeningController::class,'destroy']);
 
-
+    Route::get('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'index']);
+    Route::get('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'show']);
+    Route::post('/pembayaran', [App\Http\Controllers\Api\BayarListrikController::class, 'store']);
+    Route::put('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'update']);
+    Route::delete('/pembayaran{id}', [App\Http\Controllers\Api\BayarListrikController::class, 'destroy']);
 });
