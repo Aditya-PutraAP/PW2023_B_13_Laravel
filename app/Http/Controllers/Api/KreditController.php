@@ -42,8 +42,8 @@ class KreditController extends Controller
 
         $user = User::where('id', Auth::user()->id)->with('rekening')->first();
 
-        $user->rekening->saldo += $storeData['jumlah_uang'];
-        $user->rekening->save();
+        // $user->rekening->saldo += $storeData['jumlah_uang'];
+        // $user->rekening->save();
 
         $storeData['id_user'] = $user->id;
 
@@ -65,8 +65,13 @@ class KreditController extends Controller
             if ($request->status == 'Diterima') {
                 $kredit->status = 'Diterima';
                 $kredit->save();
+                
+                $user = User::find($kredit->id_user);
+                $user->rekening->saldo += $kredit->jumlah_uang;
+                $user->rekening->save();
+
                 return response([
-                    'message' => 'Status kredit berhasil diupdate',
+                    'message' => 'Status kredit berhasil diupdate. Jumlah uang ditambahkan ke saldo rekening.',
                     'data' => $kredit,
                 ], 200);
             } else {
