@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('no_pelanggan');
             $table->string('token');
             $table->integer('harga');
-            $table->unsignedBigInteger('id_user');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
